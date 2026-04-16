@@ -1,588 +1,294 @@
 {
 	"archetypes": {
-		"ingot": [
-			"energy",
-			"toughness"
-		],
-		"gem": [
-			"speed",
-			"energy",
-			"training"
-		],
-		"wood": [
-			"speed",
-			"acceleration",
-			"toughness"
-		],
-		"paper": [
-			"altitude",
-			"boost"
-		],
-		"string": [
-			"acceleration",
-			"handling",
-			"boost"
-		],
-		"grains": [
-			"speed",
-			"altitude"
-		],
-		"oil": [
-			"altitude",
-			"handling",
-			"training"
-		],
-		"meat": [
-			"acceleration",
-			"energy"
-		]
+		"ingot": ["energy", "toughness"],
+		"gem": ["speed", "energy", "training"],
+		"wood": ["speed", "acceleration", "toughness"],
+		"paper": ["altitude", "boost"],
+		"string": ["acceleration", "handling", "boost"],
+		"grains": ["speed", "altitude"],
+		"oil": ["altitude", "handling", "training"],
+		"meat": ["acceleration", "energy"]
 	},
 	"tiers": {
 		"1": {
-			"prefix": "copper",
-			"ingot": [
-				4,
-				8
-			],
-			"gem": [
-				4,
-				2,
-				6
-			],
-			"wood": [
-				2,
-				6,
-				4
-			],
-			"paper": [
-				8,
-				4
-			],
-			"string": [
-				2,
-				4,
-				6
-			],
-			"grains": [
-				8,
-				4
-			],
-			"oil": [
-				2,
-				6,
-				4
-			],
-			"meat": [
-				4,
-				8
-			]
+			"prefixes": {
+				"ingot": "copper",
+				"gem": "copper",
+				"wood": "oak",
+				"paper": "oak",
+				"string": "wheat",
+				"grains": "wheat",
+				"oil": "gudgeon",
+				"meat": "gudgeon"
+			},
+			"ingot": [4, 8],
+			"gem": [4, 2, 6],
+			"wood": [2, 6, 4],
+			"paper": [8, 4],
+			"string": [2, 4, 6],
+			"grains": [8, 4],
+			"oil": [2, 6, 4],
+			"meat": [4, 8]
 		},
 		"10": {
-			"prefix": "granite",
-			"ingot": [
-				5,
-				10
-			],
-			"gem": [
-				5,
-				2,
-				8
-			],
-			"wood": [
-				2,
-				8,
-				5
-			],
-			"paper": [
-				10,
-				5
-			],
-			"string": [
-				2,
-				5,
-				8
-			],
-			"grains": [
-				10,
-				5
-			],
-			"oil": [
-				2,
-				8,
-				5
-			],
-			"meat": [
-				5,
-				10
-			]
+			"prefixes": {
+				"ingot": "granite",
+				"gem": "granite",
+				"wood": "birch",
+				"paper": "birch",
+				"string": "barley",
+				"grains": "barley",
+				"oil": "trout",
+				"meat": "trout"
+			},
+			"ingot": [5, 10],
+			"gem": [5, 2, 8],
+			"wood": [2, 8, 5],
+			"paper": [10, 5],
+			"string": [2, 5, 8],
+			"grains": [10, 5],
+			"oil": [2, 8, 5],
+			"meat": [5, 10]
 		},
 		"20": {
-			"prefix": "gold",
-			"ingot": [
-				5,
-				12
-			],
-			"gem": [
-				6,
-				3,
-				9
-			],
-			"wood": [
-				3,
-				9,
-				6
-			],
-			"paper": [
-				12,
-				5
-			],
-			"string": [
-				3,
-				6,
-				9
-			],
-			"grains": [
-				12,
-				5
-			],
-			"oil": [
-				3,
-				9,
-				6
-			],
-			"meat": [
-				5,
-				12
-			]
+			"prefixes": {
+				"ingot": "gold",
+				"gem": "gold",
+				"wood": "willow",
+				"paper": "willow",
+				"string": "oat",
+				"grains": "oat",
+				"oil": "salmon",
+				"meat": "salmon"
+			},
+			"ingot": [5, 12],
+			"gem": [6, 3, 9],
+			"wood": [3, 9, 6],
+			"paper": [12, 5],
+			"string": [3, 6, 9],
+			"grains": [12, 5],
+			"oil": [3, 9, 6],
+			"meat": [5, 12]
 		},
 		"30": {
-			"prefix": "sandstone",
-			"ingot": [
-				6,
-				14
-			],
-			"gem": [
-				6,
-				3,
-				11
-			],
-			"wood": [
-				3,
-				11,
-				6
-			],
-			"paper": [
-				14,
-				6
-			],
-			"string": [
-				3,
-				6,
-				11
-			],
-			"grains": [
-				14,
-				6
-			],
-			"oil": [
-				3,
-				11,
-				6
-			],
-			"meat": [
-				6,
-				14
-			]
+			"prefixes": {
+				"ingot": "sandstone",
+				"gem": "sandstone",
+				"wood": "acacia",
+				"paper": "acacia",
+				"string": "malt",
+				"grains": "malt",
+				"oil": "carp",
+				"meat": "carp"
+			},
+			"ingot": [6, 14],
+			"gem": [6, 3, 11],
+			"wood": [3, 11, 6],
+			"paper": [14, 6],
+			"string": [3, 6, 11],
+			"grains": [14, 6],
+			"oil": [3, 11, 6],
+			"meat": [6, 14]
 		},
 		"40": {
-			"prefix": "iron",
-			"ingot": [
-				6,
-				16
-			],
-			"gem": [
-				7,
-				3,
-				12
-			],
-			"wood": [
-				3,
-				12,
-				7
-			],
-			"paper": [
-				16,
-				6
-			],
-			"string": [
-				3,
-				7,
-				12
-			],
-			"grains": [
-				16,
-				6
-			],
-			"oil": [
-				3,
-				12,
-				7
-			],
-			"meat": [
-				6,
-				16
-			]
+			"prefixes": {
+				"ingot": "iron",
+				"gem": "iron",
+				"wood": "spruce",
+				"paper": "spruce",
+				"string": "hops",
+				"grains": "hops",
+				"oil": "icefish",
+				"meat": "icefish"
+			},
+			"ingot": [6, 16],
+			"gem": [7, 3, 12],
+			"wood": [3, 12, 7],
+			"paper": [16, 6],
+			"string": [3, 7, 12],
+			"grains": [16, 6],
+			"oil": [3, 12, 7],
+			"meat": [6, 16]
 		},
 		"50": {
-			"prefix": "silver",
-			"ingot": [
-				7,
-				18
-			],
-			"gem": [
-				8,
-				4,
-				14
-			],
-			"wood": [
-				4,
-				14,
-				8
-			],
-			"paper": [
-				18,
-				7
-			],
-			"string": [
-				4,
-				8,
-				14
-			],
-			"grains": [
-				18,
-				7
-			],
-			"oil": [
-				4,
-				14,
-				8
-			],
-			"meat": [
-				7,
-				18
-			]
+			"prefixes": {
+				"ingot": "silver",
+				"gem": "silver",
+				"wood": "jungle",
+				"paper": "jungle",
+				"string": "rye",
+				"grains": "rye",
+				"oil": "piranha",
+				"meat": "piranha"
+			},
+			"ingot": [7, 18],
+			"gem": [8, 4, 14],
+			"wood": [4, 14, 8],
+			"paper": [18, 7],
+			"string": [4, 8, 14],
+			"grains": [18, 7],
+			"oil": [4, 14, 8],
+			"meat": [7, 18]
 		},
 		"60": {
-			"prefix": "cobalt",
-			"ingot": [
-				8,
-				20
-			],
-			"gem": [
-				9,
-				4,
-				15
-			],
-			"wood": [
-				4,
-				15,
-				9
-			],
-			"paper": [
-				20,
-				8
-			],
-			"string": [
-				4,
-				9,
-				15
-			],
-			"grains": [
-				20,
-				8
-			],
-			"oil": [
-				4,
-				15,
-				9
-			],
-			"meat": [
-				8,
-				20
-			]
+			"prefixes": {
+				"ingot": "cobalt",
+				"gem": "cobalt",
+				"wood": "dark",
+				"paper": "dark",
+				"string": "millet",
+				"grains": "millet",
+				"oil": "koi",
+				"meat": "koi"
+			},
+			"ingot": [8, 20],
+			"gem": [9, 4, 15],
+			"wood": [4, 15, 9],
+			"paper": [20, 8],
+			"string": [4, 9, 15],
+			"grains": [20, 8],
+			"oil": [4, 15, 9],
+			"meat": [8, 20]
 		},
 		"70": {
-			"prefix": "kanderstone",
-			"ingot": [
-				8,
-				22
-			],
-			"gem": [
-				10,
-				4,
-				17
-			],
-			"wood": [
-				4,
-				17,
-				10
-			],
-			"paper": [
-				22,
-				8
-			],
-			"string": [
-				4,
-				10,
-				17
-			],
-			"grains": [
-				22,
-				8
-			],
-			"oil": [
-				4,
-				17,
-				10
-			],
-			"meat": [
-				8,
-				22
-			]
+			"prefixes": {
+				"ingot": "kanderstone",
+				"gem": "kanderstone",
+				"wood": "light",
+				"paper": "light",
+				"string": "decay",
+				"grains": "decay",
+				"oil": "gylia",
+				"meat": "gylia"
+			},
+			"ingot": [8, 22],
+			"gem": [10, 4, 17],
+			"wood": [4, 17, 10],
+			"paper": [22, 8],
+			"string": [4, 10, 17],
+			"grains": [22, 8],
+			"oil": [4, 17, 10],
+			"meat": [8, 22]
 		},
 		"80": {
-			"prefix": "diamond",
-			"ingot": [
-				9,
-				24
-			],
-			"gem": [
-				10,
-				4,
-				18
-			],
-			"wood": [
-				4,
-				18,
-				10
-			],
-			"paper": [
-				24,
-				9
-			],
-			"string": [
-				4,
-				10,
-				18
-			],
-			"grains": [
-				24,
-				9
-			],
-			"oil": [
-				4,
-				18,
-				10
-			],
-			"meat": [
-				9,
-				24
-			]
+			"prefixes": {
+				"ingot": "diamond",
+				"gem": "diamond",
+				"wood": "pine",
+				"paper": "pine",
+				"string": "rice",
+				"grains": "rice",
+				"oil": "bass",
+				"meat": "bass"
+			},
+			"ingot": [9, 24],
+			"gem": [10, 4, 18],
+			"wood": [4, 18, 10],
+			"paper": [24, 9],
+			"string": [4, 10, 18],
+			"grains": [24, 9],
+			"oil": [4, 18, 10],
+			"meat": [9, 24]
 		},
 		"90": {
-			"prefix": "molten",
-			"ingot": [
-				9,
-				26
-			],
-			"gem": [
-				11,
-				5,
-				20
-			],
-			"wood": [
-				5,
-				20,
-				11
-			],
-			"paper": [
-				26,
-				9
-			],
-			"string": [
-				5,
-				11,
-				20
-			],
-			"grains": [
-				26,
-				9
-			],
-			"oil": [
-				5,
-				20,
-				11
-			],
-			"meat": [
-				9,
-				26
-			]
+			"prefixes": {
+				"ingot": "molten",
+				"gem": "molten",
+				"wood": "avo",
+				"paper": "avo",
+				"string": "sorghum",
+				"grains": "sorghum",
+				"oil": "molten",
+				"meat": "molten"
+			},
+			"ingot": [9, 26],
+			"gem": [11, 5, 20],
+			"wood": [5, 20, 11],
+			"paper": [26, 9],
+			"string": [5, 11, 20],
+			"grains": [26, 9],
+			"oil": [5, 20, 11],
+			"meat": [9, 26]
 		},
 		"100": {
-			"prefix": "voidstone",
-			"ingot": [
-				10,
-				28
-			],
-			"gem": [
-				12,
-				5,
-				21
-			],
-			"wood": [
-				5,
-				21,
-				12
-			],
-			"paper": [
-				28,
-				10
-			],
-			"string": [
-				5,
-				12,
-				21
-			],
-			"grains": [
-				28,
-				10
-			],
-			"oil": [
-				5,
-				21,
-				12
-			],
-			"meat": [
-				10,
-				28
-			]
+			"prefixes": {
+				"ingot": "voidstone",
+				"gem": "voidstone",
+				"wood": "sky",
+				"paper": "sky",
+				"string": "hemp",
+				"grains": "hemp",
+				"oil": "starfish",
+				"meat": "starfish"
+			},
+			"ingot": [10, 28],
+			"gem": [12, 5, 21],
+			"wood": [5, 21, 12],
+			"paper": [28, 10],
+			"string": [5, 12, 21],
+			"grains": [28, 10],
+			"oil": [5, 21, 12],
+			"meat": [10, 28]
 		},
 		"105": {
-			"prefix": "dernic",
-			"ingot": [
-				10,
-				29
-			],
-			"gem": [
-				12,
-				5,
-				22
-			],
-			"wood": [
-				5,
-				22,
-				12
-			],
-			"paper": [
-				29,
-				10
-			],
-			"string": [
-				5,
-				12,
-				22
-			],
-			"grains": [
-				29,
-				10
-			],
-			"oil": [
-				5,
-				22,
-				12
-			],
-			"meat": [
-				10,
-				29
-			]
+			"prefixes": {
+				"ingot": "dernic",
+				"gem": "dernic",
+				"wood": "dernic",
+				"paper": "dernic",
+				"string": "dernic",
+				"grains": "dernic",
+				"oil": "dernic",
+				"meat": "dernic"
+			},
+			"ingot": [10, 29],
+			"gem": [12, 5, 22],
+			"wood": [5, 22, 12],
+			"paper": [29, 10],
+			"string": [5, 12, 22],
+			"grains": [29, 10],
+			"oil": [5, 22, 12],
+			"meat": [10, 29]
 		},
 		"110": {
-			"prefix": "titanium",
-			"ingot": [
-				11,
-				30
-			],
-			"gem": [
-				13,
-				5,
-				23
-			],
-			"wood": [
-				5,
-				23,
-				13
-			],
-			"paper": [
-				30,
-				11
-			],
-			"string": [
-				5,
-				13,
-				23
-			],
-			"grains": [
-				30,
-				11
-			],
-			"oil": [
-				5,
-				23,
-				13
-			],
-			"meat": [
-				11,
-				30
-			]
+			"prefixes": {
+				"ingot": "titanium",
+				"gem": "titanium",
+				"wood": "maple",
+				"paper": "maple",
+				"string": "jute",
+				"grains": "jute",
+				"oil": "sturgeon",
+				"meat": "sturgeon"
+			},
+			"ingot": [11, 30],
+			"gem": [13, 5, 23],
+			"wood": [5, 23, 13],
+			"paper": [30, 11],
+			"string": [5, 13, 23],
+			"grains": [30, 11],
+			"oil": [5, 23, 13],
+			"meat": [11, 30]
 		},
 		"115": {
-			"prefix": "cinnabar",
-			"ingot": [
-				11,
-				31
-			],
-			"gem": [
-				13,
-				5,
-				23
-			],
-			"wood": [
-				5,
-				23,
-				13
-			],
-			"paper": [
-				31,
-				11
-			],
-			"string": [
-				5,
-				13,
-				23
-			],
-			"grains": [
-				31,
-				11
-			],
-			"oil": [
-				5,
-				23,
-				13
-			],
-			"meat": [
-				11,
-				31
-			]
+			"prefixes": {
+				"ingot": "cinnabar",
+				"gem": "cinnabar",
+				"wood": "redwood",
+				"paper": "redwood",
+				"string": "heather",
+				"grains": "heather",
+				"oil": "mahseer",
+				"meat": "mahseer"
+			},
+			"ingot": [11, 31],
+			"gem": [13, 5, 23],
+			"wood": [5, 23, 13],
+			"paper": [31, 11],
+			"string": [5, 13, 23],
+			"grains": [31, 11],
+			"oil": [5, 23, 13],
+			"meat": [11, 31]
 		}
 	}
 }

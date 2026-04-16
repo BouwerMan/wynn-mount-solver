@@ -1,15 +1,16 @@
-import './style.css';
+import "./style.css";
 import solver from "javascript-lp-solver";
 import data from "./materials.json";
 
-const statNames = ["speed", "acceleration", "altitude", "energy",
-	"handling", "toughness", "boost", "training"];
+const statNames = ["speed", "acceleration", "altitude", "energy", "handling", "toughness", "boost", "training"];
 
 const fields = ["current", "limit", "max"];
 
 const { archetypes, tiers } = data;
 
 const allTiers = Object.keys(tiers).map(Number);
+
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 function buildModel(deficits, availableTiers) {
 	const variables = {};
@@ -85,15 +86,19 @@ function updateTierCheckboxes() {
 		const val = Number(document.getElementById(`${name}-current`).value);
 		max = Math.max(max, val);
 	}
-	const availableTiers = allTiers.filter(t => t <= max);
+	const availableTiers = allTiers.filter((t) => t <= max);
 
 	const container = document.getElementById("tier-checkboxes");
-	container.innerHTML = availableTiers.map(t => `
+	container.innerHTML = availableTiers
+		.map(
+			(t) => `
 	  <label>
 		<input type="checkbox" class="tier-check" value="${t}" checked />
 		Tier ${t}
 	  </label>
-	`).join("");
+	`,
+		)
+		.join("");
 }
 
 function renderResult(result, deficits) {
@@ -113,20 +118,46 @@ function renderResult(result, deficits) {
 			return { tier, slot, count };
 		});
 
-	// Sort by count
-	materials.sort((a, b) => b.count - a.count);
+	// Sort by count desc, then tier asc, then slot alphabetically
+	materials.sort((a, b) => b.count - a.count || Number(a.tier) - Number(b.tier) || a.slot.localeCompare(b.slot));
 
 	console.log(materials);
 
+	const gained = {};
+	for (const { tier, slot, count } of materials) {
+		const stNames = archetypes[slot];
+		const values = tiers[tier][slot];
+		stNames.forEach((stat, i) => {
+			gained[stat] = (gained[stat] || 0) + values[i] * count;
+		});
+	}
+
+	const overshoot = {};
+	for (const name of statNames) {
+		overshoot[name] = (gained[name] || 0) - (deficits[name] || 0);
+	}
+
 	// Build HTML
 	const itemsHtml = materials
-		.map(({ tier, slot, count }) => `<li>${count}× Tier ${tier} ${slot}</li>`)
+		.map(({ tier, slot, count }) => {
+			const prefix = tiers[tier].prefixes[slot];
+			const displayName = `${capitalize(prefix)} ${capitalize(slot)}`;
+			return `<li>${count}× ${displayName} (Level ${tier})</li>`;
+		})
 		.join("");
 
+	const overshootHtml = Object.entries(overshoot)
+		.filter(([, amount]) => amount > 0)
+		.map(([name, amount]) => `<li>${capitalize(name)}: +${amount}</li>`)
+		.join("");
+
+	const overshootSection = overshootHtml ? `<h3>Overshoot:</h3><ul>${overshootHtml}</ul>` : "";
+
 	resultEl.innerHTML = `
-	<h3>Total: ${result.result} items</h3>
-	<ul>${itemsHtml}</ul>
-  `;
+		<h3>Total: ${result.result} items</h3>
+		<ul>${itemsHtml}</ul>
+		${overshootSection}
+	`;
 }
 
 // Attach the update function to every stat input
@@ -169,11 +200,10 @@ document.getElementById("solve-btn").addEventListener("click", () => {
 	errorEl.textContent = "";
 
 	const checked = document.querySelectorAll(".tier-check:checked");
-	const availableTiers = Array.from(checked).map(el => Number(el.value));
+	const availableTiers = Array.from(checked).map((el) => Number(el.value));
 
 	const model = buildModel(deficits, availableTiers);
 	const result = solver.Solve(model);
 	console.log(result);
 	renderResult(result, deficits);
 });
-
