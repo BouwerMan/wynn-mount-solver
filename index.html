@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>wynn-mount-solver</title>
+</head>
+
+<body>
+	<div id="app">
+		<table>
+			<thead>
+				<tr>
+					<th>Stat</th>
+					<th>Current</th>
+					<th>Limit</th>
+					<th>Max</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Speed</td>
+					<td><input type="number" id="speed-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="speed-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="speed-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Acceleration</td>
+					<td><input type="number" id="acceleration-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="acceleration-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="acceleration-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Altitude</td>
+					<td><input type="number" id="altitude-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="altitude-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="altitude-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Energy</td>
+					<td><input type="number" id="energy-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="energy-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="energy-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Handling</td>
+					<td><input type="number" id="handling-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="handling-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="handling-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Toughness</td>
+					<td><input type="number" id="toughness-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="toughness-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="toughness-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Boost</td>
+					<td><input type="number" id="boost-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="boost-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="boost-max" value="30" min="0" step="1" /></td>
+				</tr>
+				<tr>
+					<td>Training</td>
+					<td><input type="number" id="training-current" value="1" min="0" step="1" /></td>
+					<td><input type="number" id="training-limit" value="10" min="0" step="1" /></td>
+					<td><input type="number" id="training-max" value="30" min="0" step="1" /></td>
+				</tr>
+
+			</tbody>
+		</table>
+		<div id="tier-checkboxes"></div>
+		<button id="solve-btn">Solve</button>
+		<div id="error"></div>
+		<pre id="result"></pre>
+	</div>
+	<script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
