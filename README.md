@@ -2,7 +2,7 @@
 
 A client-side web tool that solves the minimum-item feeding problem for [Wynncraft](https://wynncraft.com) mounts. Given a mount's current stats, limits, and maxes, it computes the fewest crafting materials needed to raise every stat limit to its max.
 
-Uses integer linear programming via [`javascript-lp-solver`](https://github.com/JWally/jsLPSolver). Fully client-side — no server, no tracking. State is encoded in the URL, so you can bookmark or share mount configurations.
+Uses integer linear programming via [`javascript-lp-solver`](https://github.com/JWally/jsLPSolver). State is encoded in the URL, so you can bookmark or share mount configurations.
 
 ## Usage
 
