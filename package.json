@@ -16,6 +16,6 @@
 		"vite": "^8.0.4"
 	},
 	"dependencies": {
-		"javascript-lp-solver": "^1.0.3"
+		"glpk.js": "^5.0.0"
 	}
 }

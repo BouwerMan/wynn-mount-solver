@@ -135,8 +135,14 @@ export class UIController {
 		const checked = document.querySelectorAll(".tier-check:checked");
 		const availableTiers = Array.from(checked).map((el) => Number(el.value));
 
+		console.info("[UI] Dispatching solve", { availableTiers, deficits });
+		const solveStart = performance.now();
+
 		// Setup the worker callback
 		this.worker.onmessage = (event) => {
+			const roundTripMs = (performance.now() - solveStart).toFixed(2);
+			console.info(`[UI] Result received in ${roundTripMs}ms (includes worker overhead + message passing)`);
+
 			this.isSolving = false;
 			this.resetSolveButton();
 			this.renderResult(event.data, deficits);
