@@ -1,82 +1,59 @@
 <!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>wynn-mount-solver</title>
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>wynn-mount-solver</title>
-</head>
+	<body>
+		<div id="app" class="min-h-screen bg-zinc-950 p-4 font-sans text-zinc-300 md:p-8">
+			<div class="mx-auto max-w-6xl">
+				<header class="mb-8 text-center md:text-left">
+					<h1 class="text-3xl font-bold text-zinc-100">Wynncraft Mount Solver</h1>
+					<p class="mt-2 text-zinc-400">Calculate the optimal materials to max your mount's stats.</p>
+				</header>
 
-<body>
-	<div id="app">
-		<table>
-			<thead>
-				<tr>
-					<th>Stat</th>
-					<th>Current</th>
-					<th>Limit</th>
-					<th>Max</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Speed</td>
-					<td><input type="number" id="speed-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="speed-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="speed-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Acceleration</td>
-					<td><input type="number" id="acceleration-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="acceleration-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="acceleration-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Altitude</td>
-					<td><input type="number" id="altitude-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="altitude-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="altitude-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Energy</td>
-					<td><input type="number" id="energy-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="energy-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="energy-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Handling</td>
-					<td><input type="number" id="handling-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="handling-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="handling-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Toughness</td>
-					<td><input type="number" id="toughness-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="toughness-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="toughness-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Boost</td>
-					<td><input type="number" id="boost-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="boost-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="boost-max" value="30" min="0" step="1" /></td>
-				</tr>
-				<tr>
-					<td>Training</td>
-					<td><input type="number" id="training-current" value="1" min="0" step="1" /></td>
-					<td><input type="number" id="training-limit" value="10" min="0" step="1" /></td>
-					<td><input type="number" id="training-max" value="30" min="0" step="1" /></td>
-				</tr>
+				<div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+					<div class="panel-card self-start lg:col-span-2">
+						<div class="panel-header">
+							<h2 class="text-lg font-semibold text-zinc-100">Mount Stats</h2>
+						</div>
 
-			</tbody>
-		</table>
-		<div id="tier-checkboxes"></div>
-		<button id="solve-btn">Solve</button>
-		<div id="error"></div>
-		<pre id="result"></pre>
-	</div>
-	<script type="module" src="/src/main.js"></script>
-</body>
+						<div id="stats-container" class="flex flex-col gap-2 p-6"></div>
+					</div>
 
+					<div class="flex flex-col gap-6">
+						<div class="panel-card p-6">
+							<h2 class="mb-4 text-sm font-bold tracking-wider text-zinc-500 uppercase">
+								Available Tiers
+							</h2>
+							<div id="tier-checkboxes" class="flex flex-wrap gap-2"></div>
+						</div>
+
+						<button id="solve-btn" class="btn-primary">Solve Routing</button>
+
+						<div
+							id="error"
+							class="rounded-lg border border-red-900/50 bg-red-950/50 p-3 text-sm font-medium text-red-400 empty:hidden"
+						></div>
+
+						<div class="panel-card flex flex-grow flex-col">
+							<div class="panel-header">
+								<h2 class="text-lg font-semibold text-zinc-100">Shopping List</h2>
+							</div>
+							<div class="flex-grow p-6">
+								<div id="result" class="text-sm text-zinc-400">
+									<p class="text-zinc-600 italic">Awaiting input...</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script type="module" src="/src/main.js"></script>
+		</div>
+	</body>
 </html>
