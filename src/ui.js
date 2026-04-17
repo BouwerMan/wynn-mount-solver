@@ -1,8 +1,12 @@
+import SolverWorker from "./solver.worker.js?worker"; // Special Vite import
 import { UrlStateManager } from "./state.js";
 import { SolverEngine } from "./solver.js";
 import { STAT_NAMES, FIELDS, ALL_TIERS, archetypes, tiers, capitalize } from "./constants.js";
 
 export class UIController {
+	static worker = new SolverWorker();
+	static isSolving = false;
+
 	static init() {
 		this.renderStatsInputs();
 
@@ -101,6 +105,79 @@ export class UIController {
 	}
 
 	static handleSolve() {
+		if (this.isSolving) {
+			this.cancelSolve();
+			return;
+		}
+
+		const { deficits, errors } = this.getFormStats();
+		if (errors.length) return this.showErrors(errors);
+
+		this.isSolving = true;
+
+		const solveBtn = document.getElementById("solve-btn");
+		const resultEl = document.getElementById("result");
+
+		solveBtn.innerHTML = "Cancel";
+		solveBtn.classList.remove("btn-primary");
+		solveBtn.classList.add("btn-secondary");
+
+		resultEl.innerHTML = `
+		<div class="flex items-center">
+			<svg class="mr-3 size-5 animate-spin text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+				<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+				<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+			</svg>
+			<div class="text-zinc-500 italic">Finding optimal materials...</div>
+		</div>`;
+
+		// Send data to the background worker
+		const checked = document.querySelectorAll(".tier-check:checked");
+		const availableTiers = Array.from(checked).map((el) => Number(el.value));
+
+		// Setup the worker callback
+		this.worker.onmessage = (event) => {
+			this.isSolving = false;
+			this.resetSolveButton();
+			this.renderResult(event.data, deficits);
+		};
+
+		this.worker.postMessage({ deficits, availableTiers });
+	}
+
+	static cancelSolve() {
+		this.worker.terminate();
+
+		// Re-instantiate the worker so we can solve again later
+		this.worker = new SolverWorker();
+
+		// Reset UI
+		this.isSolving = false;
+		this.resetSolveButton();
+		document.getElementById("result").innerHTML = `<div class="text-zinc-500 italic">Solving cancelled.</div>`;
+	}
+
+	static resetSolveButton() {
+		const solveBtn = document.getElementById("solve-btn");
+		solveBtn.innerHTML = "Solve";
+
+		// Revert to original colors
+		solveBtn.classList.remove("btn-secondary");
+		solveBtn.classList.add("btn-primary");
+	}
+
+	static showErrors(errors) {
+		const errorEl = document.getElementById("error");
+		if (errorEl) {
+			if (errors.length) {
+				errorEl.textContent = errors.join("\n");
+				return;
+			}
+			errorEl.textContent = "";
+		}
+	}
+
+	static getFormStats() {
 		const deficits = {};
 		const errors = [];
 
@@ -115,20 +192,7 @@ export class UIController {
 			if (current > limit) errors.push(`${name}: current (${current}) cannot exceed limit (${limit})`);
 		}
 
-		const errorEl = document.getElementById("error");
-		if (errorEl) {
-			if (errors.length) {
-				errorEl.textContent = errors.join("\n");
-				return;
-			}
-			errorEl.textContent = "";
-		}
-
-		const checkedBoxes = document.querySelectorAll(".tier-check:checked");
-		const availableTiers = Array.from(checkedBoxes).map((el) => Number(el.value));
-
-		const result = SolverEngine.solve(deficits, availableTiers);
-		this.renderResult(result, deficits);
+		return { deficits, errors };
 	}
 
 	static renderResult(result, deficits) {
